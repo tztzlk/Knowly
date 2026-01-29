@@ -8,7 +8,7 @@ export default function ContactForm() {
       title="Start a conversation with our team"
       description="Tell us about your school, district, or partnership goals."
     >
-      <form className="grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:grid-cols-2">
+      <form className="grid gap-6 rounded-card border border-neutral-border bg-white p-6 shadow-card md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-sm font-medium text-slate-700">
             Full name
@@ -18,7 +18,7 @@ export default function ContactForm() {
             name="name"
             type="text"
             placeholder="Alex Johnson"
-            className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="rounded-input border border-neutral-border bg-white px-4 py-2.5 text-sm text-slate-800 transition-colors placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -30,7 +30,7 @@ export default function ContactForm() {
             name="email"
             type="email"
             placeholder="alex@school.edu"
-            className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="rounded-input border border-neutral-border bg-white px-4 py-2.5 text-sm text-slate-800 transition-colors placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
           />
         </div>
         <div className="flex flex-col gap-2 md:col-span-2">
@@ -42,7 +42,7 @@ export default function ContactForm() {
             name="organization"
             type="text"
             placeholder="Riverview School District"
-            className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="rounded-input border border-neutral-border bg-white px-4 py-2.5 text-sm text-slate-800 transition-colors placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
           />
         </div>
         <div className="flex flex-col gap-2 md:col-span-2">
@@ -54,7 +54,7 @@ export default function ContactForm() {
             name="message"
             rows={4}
             placeholder="Share your goals, timeline, or questions."
-            className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="rounded-input border border-neutral-border bg-white px-4 py-2.5 text-sm text-slate-800 transition-colors placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
           />
         </div>
         <div className="md:col-span-2">

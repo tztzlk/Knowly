@@ -7,14 +7,14 @@ export default function ContactEmailCapture() {
       eyebrow="Stay updated"
       title="Get product updates and launch news"
       description="Join our list for release notes, pilot opportunities, and new features."
-      className="bg-slate-50"
+      className="bg-neutral-muted"
     >
-      <form className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:flex-row md:items-center">
+      <form className="flex flex-col gap-4 rounded-card border border-neutral-border bg-white p-6 shadow-card md:flex-row md:items-center">
         <input
           type="email"
           name="newsletter"
           placeholder="you@school.edu"
-          className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          className="w-full rounded-input border border-neutral-border bg-white px-4 py-2.5 text-sm text-slate-800 transition-colors placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-100"
         />
         <Button>Subscribe</Button>
       </form>

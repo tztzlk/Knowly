@@ -6,10 +6,10 @@ export default function AboutVision() {
       eyebrow="Vision"
       title="A future where learning equals opportunity"
       description="We envision a world where students graduate with real skills, not just credits."
-      className="bg-slate-50"
+      className="bg-neutral-muted"
     >
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-base text-slate-600">
+      <div className="rounded-card border border-neutral-border bg-white p-6 shadow-card">
+        <p className="text-base leading-relaxed text-slate-600">
           Our platform aligns education with industry needs, helping schools
           deliver measurable career outcomes at scale.
         </p>

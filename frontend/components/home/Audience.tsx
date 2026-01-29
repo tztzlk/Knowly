@@ -22,15 +22,15 @@ export default function Audience() {
       eyebrow="Built for everyone"
       title="Designed for school systems and motivated learners"
       description="Knowly adapts to the needs of administrators, educators, and students alike."
-      className="bg-slate-50"
+      className="bg-neutral-muted"
     >
       <div className="grid gap-6 md:grid-cols-3">
         {audiences.map((audience) => (
           <Card key={audience.title}>
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-slate-900 md:text-lg">
               {audience.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-600">{audience.copy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{audience.copy}</p>
           </Card>
         ))}
       </div>

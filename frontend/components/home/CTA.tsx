@@ -3,26 +3,30 @@ import Container from "@/components/layout/Container";
 
 export default function CTA() {
   return (
-    <section className="py-20">
+    <section className="py-section md:py-sectionLg">
       <Container>
-        <div className="rounded-3xl bg-indigo-600 px-8 py-12 text-white md:px-12 md:py-16">
+        <div className="rounded-cardLg bg-primary-600 px-6 py-10 text-white shadow-cardHover md:px-10 md:py-14">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl space-y-4">
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              <h2 className="text-2xl font-semibold tracking-tight text-white md:text-3xl lg:text-4xl">
                 Bring career readiness to every learner
               </h2>
-              <p className="text-base text-indigo-100 md:text-lg">
+              <p className="text-base text-primary-100 md:text-lg">
                 Join the schools and students shaping the future of education.
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="secondary">
+            <div className="flex flex-wrap gap-3">
+              <Button
+                href="/contact"
+                variant="secondary"
+                className="bg-white text-primary-700 hover:bg-primary-50 hover:text-primary-800"
+              >
                 Book a demo
               </Button>
               <Button
                 href="/students"
                 variant="ghost"
-                className="text-white hover:text-white"
+                className="text-primary-100 hover:bg-white/10 hover:text-white"
               >
                 Explore student plan
               </Button>

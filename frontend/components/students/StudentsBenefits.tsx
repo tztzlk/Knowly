@@ -26,10 +26,10 @@ export default function StudentsBenefits() {
       <div className="grid gap-6 md:grid-cols-3">
         {benefits.map((benefit) => (
           <Card key={benefit.title}>
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-slate-900 md:text-lg">
               {benefit.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-600">{benefit.copy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{benefit.copy}</p>
           </Card>
         ))}
       </div>

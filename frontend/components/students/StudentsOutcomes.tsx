@@ -22,15 +22,15 @@ export default function StudentsOutcomes() {
       eyebrow="Outcomes"
       title="Build proof you are ready for what comes next"
       description="Knowly makes your progress visible and meaningful."
-      className="bg-slate-50"
+      className="bg-neutral-muted"
     >
       <div className="grid gap-6 md:grid-cols-3">
         {outcomes.map((outcome) => (
           <Card key={outcome.title}>
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-slate-900 md:text-lg">
               {outcome.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-600">{outcome.copy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{outcome.copy}</p>
           </Card>
         ))}
       </div>

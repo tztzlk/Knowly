@@ -26,8 +26,8 @@ export default function Problem() {
       <div className="grid gap-6 md:grid-cols-3">
         {problems.map((problem) => (
           <Card key={problem.title}>
-            <h3 className="text-lg font-semibold text-slate-900">{problem.title}</h3>
-            <p className="mt-3 text-sm text-slate-600">{problem.copy}</p>
+            <h3 className="text-base font-semibold text-slate-900 md:text-lg">{problem.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{problem.copy}</p>
           </Card>
         ))}
       </div>

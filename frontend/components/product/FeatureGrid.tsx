@@ -26,15 +26,15 @@ export default function FeatureGrid() {
       eyebrow="Capabilities"
       title="Built for modern EdTech teams"
       description="Everything you need to deliver career readiness at scale."
-      className="bg-slate-50"
+      className="bg-neutral-muted"
     >
       <div className="grid gap-6 md:grid-cols-2">
         {features.map((feature) => (
           <Card key={feature.title}>
-            <h3 className="text-lg font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-slate-900 md:text-lg">
               {feature.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-600">{feature.copy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{feature.copy}</p>
           </Card>
         ))}
       </div>

@@ -26,13 +26,13 @@ export default function HowItWorks() {
       <div className="grid gap-6 md:grid-cols-3">
         {steps.map((step, index) => (
           <Card key={step.title}>
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-500">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">
               Step {index + 1}
             </span>
-            <h3 className="mt-3 text-lg font-semibold text-slate-900">
+            <h3 className="mt-3 text-base font-semibold text-slate-900 md:text-lg">
               {step.title}
             </h3>
-            <p className="mt-3 text-sm text-slate-600">{step.copy}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{step.copy}</p>
           </Card>
         ))}
       </div>
