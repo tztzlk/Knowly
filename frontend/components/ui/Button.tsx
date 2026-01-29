@@ -1,15 +1,17 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonProps = {
   children: ReactNode;
   href?: string;
   variant?: "primary" | "secondary" | "ghost";
   className?: string;
-};
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type">;
 
 const baseStyles =
-  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60";
+  "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
 
 const variants = {
   primary:
@@ -25,6 +27,9 @@ export default function Button({
   href,
   variant = "primary",
   className,
+  type = "button",
+  disabled,
+  ...rest
 }: ButtonProps) {
   const classes = `${baseStyles} ${variants[variant]} ${className ?? ""}`;
 
@@ -36,5 +41,9 @@ export default function Button({
     );
   }
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <button type={type} className={classes} disabled={disabled} {...rest}>
+      {children}
+    </button>
+  );
 }
