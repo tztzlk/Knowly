@@ -1,4 +1,4 @@
-# UniSmart MVP
+# Knowly MVP
 
 Stack: **React** (JS) + **Tailwind CSS** | **Node.js** (Express) | **PostgreSQL**
 
