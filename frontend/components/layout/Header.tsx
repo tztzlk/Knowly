@@ -43,6 +43,12 @@ export default function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <Button
+            href="/quiz"
+            className="hidden min-w-[120px] md:inline-flex"
+          >
+            Career Quiz
+          </Button>
           <Link
             href="/students/profile"
             className="inline-flex items-center gap-2 rounded-md px-2.5 py-2 text-slate-600 transition-colors duration-200 hover:bg-neutral-muted hover:text-slate-900 active:bg-neutral-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"

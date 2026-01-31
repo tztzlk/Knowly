@@ -17,7 +17,15 @@ export default function Hero() {
             careers and gain practical, job-ready skills.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <Button href="/contact">Get Early Access</Button>
+            <Button
+              href="/quiz"
+              className="ring-2 ring-primary-500 ring-offset-2 shadow-cardHover"
+            >
+              Take the Career Quiz
+            </Button>
+            <Button variant="secondary" href="/contact">
+              Get Early Access
+            </Button>
             <Button variant="secondary" href="/schools">
               For Schools
             </Button>

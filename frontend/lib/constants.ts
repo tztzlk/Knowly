@@ -2,6 +2,7 @@ export const SITE_NAME = "Knowly";
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/quiz", label: "Career Quiz" },
   { href: "/product", label: "Product" },
   { href: "/schools", label: "Schools" },
   { href: "/students", label: "Students" },

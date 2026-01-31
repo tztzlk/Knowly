@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import { initDb, getCounter, incrementCounter, decrementCounter } from './db.js'
 import profileRoutes from './profile/routes.js'
+import quizRoutes from './quiz/routes.js'
 import { initProfileDb } from './profile/db.js'
 
 const app = express()
@@ -43,6 +44,7 @@ app.post('/api/counter/decrement', async (req, res) => {
 })
 
 app.use('/api/profile', profileRoutes)
+app.use('/api/quiz', quizRoutes)
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }))
 

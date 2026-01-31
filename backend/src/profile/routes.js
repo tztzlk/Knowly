@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {
   createProfile,
+  getProfile,
   updateProfile,
   validateGoal,
   validateInterests,
@@ -80,6 +81,19 @@ function validateProfileBody(req, res, next) {
   }
   next()
 }
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const profile = await getProfile(id)
+    if (!profile) {
+      return res.status(404).json({ error: 'Profile not found' })
+    }
+    res.json(profile)
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
 
 router.post('/', validateProfileBody, async (req, res) => {
   try {

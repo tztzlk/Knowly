@@ -28,11 +28,13 @@ export async function initProfileDb() {
           place_of_study VARCHAR(200) NOT NULL,
           interests TEXT[] NOT NULL DEFAULT '{}',
           goal VARCHAR(50) NOT NULL,
+          quiz_answers JSONB,
           created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
         )
       `)
       await client.query(`ALTER TABLE student_profiles ADD COLUMN full_name VARCHAR(100)`).catch(() => {})
       await client.query(`ALTER TABLE student_profiles ADD COLUMN place_of_study VARCHAR(200)`).catch(() => {})
+      await client.query(`ALTER TABLE student_profiles ADD COLUMN IF NOT EXISTS quiz_answers JSONB`).catch(() => {})
     } finally {
       client.release()
     }
@@ -68,6 +70,7 @@ export async function createProfile({ fullName, ageOrGrade, placeOfStudy, intere
       place_of_study: placeOfStudy,
       interests,
       goal,
+      quiz_answers: null,
       created_at: new Date().toISOString(),
     }
     memoryProfiles.push(record)
@@ -84,6 +87,46 @@ export async function createProfile({ fullName, ageOrGrade, placeOfStudy, intere
     )
     const row = r.rows[0]
     return { id: row.id, created_at: row.created_at }
+  } finally {
+    client.release()
+  }
+}
+
+export async function getProfile(id) {
+  if (useMemory) {
+    const p = memoryProfiles.find((x) => x.id === id)
+    if (!p) return null
+    return {
+      id: p.id,
+      fullName: p.full_name,
+      ageOrGrade: p.age_or_grade,
+      placeOfStudy: p.place_of_study,
+      interests: p.interests,
+      goal: p.goal,
+      quizAnswers: p.quiz_answers ?? null,
+      created_at: p.created_at,
+    }
+  }
+
+  const client = await pool.connect()
+  try {
+    const r = await client.query(
+      `SELECT id, full_name, age_or_grade, place_of_study, interests, goal, quiz_answers, created_at
+       FROM student_profiles WHERE id = $1`,
+      [id]
+    )
+    if (r.rows.length === 0) return null
+    const row = r.rows[0]
+    return {
+      id: row.id,
+      fullName: row.full_name,
+      ageOrGrade: row.age_or_grade,
+      placeOfStudy: row.place_of_study,
+      interests: row.interests || [],
+      goal: row.goal,
+      quizAnswers: row.quiz_answers ?? null,
+      created_at: row.created_at,
+    }
   } finally {
     client.release()
   }
@@ -112,6 +155,27 @@ export async function updateProfile(id, { fullName, ageOrGrade, placeOfStudy, in
        WHERE id = $6
        RETURNING id`,
       [fullName, ageOrGrade, placeOfStudy, interests, goal, id]
+    )
+    if (r.rows.length === 0) return null
+    return { id: r.rows[0].id, updated: true }
+  } finally {
+    client.release()
+  }
+}
+
+export async function updateQuizAnswers(id, answers) {
+  if (useMemory) {
+    const idx = memoryProfiles.findIndex((p) => p.id === id)
+    if (idx === -1) return null
+    memoryProfiles[idx].quiz_answers = answers
+    return { id, updated: true }
+  }
+
+  const client = await pool.connect()
+  try {
+    const r = await client.query(
+      `UPDATE student_profiles SET quiz_answers = $1 WHERE id = $2 RETURNING id`,
+      [JSON.stringify(answers), id]
     )
     if (r.rows.length === 0) return null
     return { id: r.rows[0].id, updated: true }

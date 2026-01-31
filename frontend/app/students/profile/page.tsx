@@ -8,7 +8,9 @@ import Button from "@/components/ui/Button";
 import {
   submitStudentProfile,
   updateStudentProfile,
+  getStudentProfile,
   getStoredProfile,
+  getStoredProfileId,
   setStoredProfile,
 } from "@/lib/profile";
 import type { GoalValue, InterestValue } from "@/lib/profile-constants";
@@ -38,8 +40,14 @@ export default function StudentProfilePage() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const stored = getStoredProfile();
-    if (stored) {
+    function applyProfile(stored: {
+      id: string;
+      fullName?: string;
+      ageOrGrade?: string;
+      placeOfStudy?: string;
+      interests?: string[];
+      goal?: string;
+    }) {
       setProfileId(stored.id);
       setFullName(stored.fullName ?? "");
       const aog = stored.ageOrGrade?.trim() ?? "";
@@ -53,13 +61,33 @@ export default function StudentProfilePage() {
       }
       setPlaceOfStudy(stored.placeOfStudy ?? "");
       setInterests(
-        stored.interests.filter((i): i is InterestValue =>
+        (stored.interests ?? []).filter((i): i is InterestValue =>
           VALID_INTEREST_VALUES.has(i as InterestValue)
         )
       );
       setGoal(
         VALID_GOAL_VALUES.has(stored.goal as GoalValue) ? (stored.goal as GoalValue) : ""
       );
+    }
+
+    const stored = getStoredProfile();
+    if (stored) {
+      applyProfile(stored);
+      setHydrated(true);
+      return;
+    }
+    const id = getStoredProfileId();
+    if (id) {
+      getStudentProfile(id)
+        .then((profile) => {
+          if (profile) {
+            setStoredProfile(profile);
+            applyProfile(profile);
+          }
+          setHydrated(true);
+        })
+        .catch(() => setHydrated(true));
+      return;
     }
     setHydrated(true);
   }, []);

@@ -17,9 +17,16 @@ export default function CTA() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Button
-                href="/contact"
+                href="/quiz"
                 variant="secondary"
-                className="bg-white text-primary-700 hover:bg-primary-50 hover:text-primary-800"
+                className="bg-white text-primary-700 shadow-subtle hover:bg-primary-50 hover:text-primary-800"
+              >
+                Take the Career Quiz
+              </Button>
+              <Button
+                href="/contact"
+                variant="ghost"
+                className="text-primary-100 hover:bg-white/10 hover:text-white"
               >
                 Book a demo
               </Button>
